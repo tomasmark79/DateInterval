@@ -113,14 +113,14 @@ tm getUserDate(std::string msg)
         else months[1] = 28;
 
         if (t.tm_mday < 1 || t.tm_mday > months[t.tm_mon])
-            std::cout << "Spatne zadane datum (den) v mesici." << std::endl;
+            std::cout << "Wrong date entered. (day) " << std::endl;
         else if (t.tm_mon < 0 || t.tm_mon > 11 )
-            std::cout << "Spatne zadane datum (mesic) v roce." << std::endl;
+            std::cout << "Wrong date entered. (month) " << std::endl;
         else if (t.tm_year < 1 || t.tm_year > 500)
-            std::cout << "Spatne zadane datum (rok)." << std::endl;
+            std::cout << "Wrong date entered. (year) " << std::endl;
 #ifndef DEBUG_DATE_ANOMALIES
         else if (!isFirstDateParameterOlder(t, now))
-            std::cout << "Datum zadane v minulosti." << std::endl;
+            std::cout << "Wrong date entered. (the past) " << std::endl;
 #endif
         else
             break; // valid input received
@@ -142,6 +142,8 @@ void printDateTm(tm& date_tm)
 
 int main()
 {
+    std::cout << "Date Interval in hope of educational purpose." << std::endl;
+    std::cout << "Copyright (c) 2024 Tomas Mark" << std::endl << std::endl;
 
 #ifdef DEBUG_DATE_ANOMALIES
     time_t now_date = time(0);
